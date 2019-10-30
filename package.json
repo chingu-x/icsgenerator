@@ -1,0 +1,15 @@
+{
+  "name": "icsgenerator",
+  "version": "1.0.0",
+  "description": "Generate .ics meeting invitation files",
+  "main": "icsgen.js",
+  "repository": "https://github.com/chingu-x/icsgenerator.git",
+  "author": "jdmedlock <jdmedlock@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "icsgen": "node ./src/icsgen --"
+  },
+  "dependencies": {
+    "commander": "^3.0.2"
+  }
+}
