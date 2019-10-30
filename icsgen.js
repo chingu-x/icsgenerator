@@ -15,11 +15,13 @@ program
     console.log('- team: ', args.team);
     console.log('- output: ', args.output);
 
+    /*
     const discord = new Discord(process.env.CATEGORY_INCLUDE, 
         process.env.CHANNEL_INCLUDE, process.env.CHANNEL_EXCLUDE, 
         process.env.DS_USER_EXCLUDE, 
         args.output, args.prefix, args.suffix);
     await discord.extractMetrics(args.password);
+    */
 
   });
  
