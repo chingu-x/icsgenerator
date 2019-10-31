@@ -1,8 +1,9 @@
-const FileOps = require('./src/util/FileOps');
 const program = require('commander');
+const FileOps = require('./src/FileOps');
+const Invitation = require('./src/Invitation');
 
 program 
-  .command('gen')
+  .command('generate')
   .description('Generate .ics meeting files')
   .option('-m, --model <model-path>', 'Path to the .ics model file')
   .option('-t, --team <team-path>', 'Path to file containing recipient team details')
@@ -15,13 +16,12 @@ program
     console.log('- team: ', args.team);
     console.log('- output: ', args.output);
 
-    /*
-    const discord = new Discord(process.env.CATEGORY_INCLUDE, 
-        process.env.CHANNEL_INCLUDE, process.env.CHANNEL_EXCLUDE, 
-        process.env.DS_USER_EXCLUDE, 
-        args.output, args.prefix, args.suffix);
-    await discord.extractMetrics(args.password);
-    */
+    if ( FileOps.validateDirPath(args.output !== 0) ) {
+      throw new Error('Output file path (-m parameter) is not a directory');
+    }
+
+    const invitation = new Invitation(args.model, args.team, args.output);
+    await invitation.generate();
 
   });
  
