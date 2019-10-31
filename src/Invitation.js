@@ -37,7 +37,7 @@ class Invitation {
    * @memberof Invitation
    */
   async createInvitation(teamName, discordName, email, ianaTZ) {
-    console.log(`team:${teamName} discord:${discordName} email:${email} tz:${ianaTZ}`);
+    console.log(`Processing team:${teamName} discord:${discordName} email:${email} tz:${ianaTZ}`);
     let eventInvitation = [];
     for (let i = 0; i < this.icsModel.length; i++) {
       let keyword = '';
@@ -65,11 +65,13 @@ class Invitation {
    * @memberof Invitation
    */
   async generate() {
+    console.log('Calendar invitation generation starting...');
     this.loadFiles();
     for (let i = 0; i < this.recipients.length; i++) { 
       let [ teamName, discordName, email, ianaTZ ] = this.recipients[i];
       this.createInvitation(teamName, discordName, email, ianaTZ);
     }
+    console.log('Generation complete.');
   }
 }
 
