@@ -1,0 +1,34 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20191031T180000
+DTEND:20191031T190000
+DTSTAMP:20191029T154445Z
+ORGANIZER;CN=Voyage 13 Team Meetings:mailto:chingu.io_inj49k3ca7us5ccim4abr
+ t6ffo@group.calendar.google.com
+UID:2tq92qs4b81ehb1egfsk20n0lj@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=<<placeholder>>;X-NUM-GUESTS=0:mailto:<<placeholder>>
+CREATED:20191029T154412Z
+DESCRIPTION:1. Review what was completed in the previous sprint. Everyone s
+ hould take a turn answering these questions:\n\n- What tasks did I complete
+  in the prior sprint?\n- What tasks do I need to complete in this sprint?\n
+ - What roadblocks have I encountered and what/who do I need to resolve them
+ ?\n\n2. Retrospect on what changes could be made to the development process
+  to improve efficiency and quality\n\n3. Plan the work to be completed in t
+ he upcoming sprint.\n\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\nPlease do not edit this section of the
+  description.\n\nThis event has a video call.\nJoin: https://meet.google.co
+ m/wig-xiyh-pxd\n+1 505-437-1053 PIN: 994464563#\nView more phone numbers: h
+ ttps://tel.meet/wig-xiyh-pxd?pin=7109863105230&hs=7\n-::~:~::~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20191029T154412Z
+LOCATION:TBD
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:<<placeholder>>
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

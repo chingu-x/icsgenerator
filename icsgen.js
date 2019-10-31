@@ -22,8 +22,8 @@ program
     if ( args.team === undefined ) {
       throw new Error('Recipient file path (-t parameter) not defined');
     }
-    if ( FileOps.validateDirPath(args.output !== 0) ) {
-      //throw new Error('Output file path (-o parameter) is not a directory');
+    if ( FileOps.validateDirPath(args.output) !== 0 ) {
+      throw new Error('Output file path (-o parameter) is not a directory');
     }
 
     const invitation = new Invitation(args.model, args.team, args.output);

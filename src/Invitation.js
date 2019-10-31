@@ -31,12 +31,13 @@ class Invitation {
    * Create a calendar invitation for a recipient. Information about the 
    * `.ics` file format can be found at https://icalendar.org/
    * @param {String} teamName Recipient team name
+   * @param {String} discordName Recipient's Discord user name
    * @param {String} email Recipient email address
    * @param {String} ianaTZ Recipient IANA timezone
    * @memberof Invitation
    */
-  createInvitation(teamName, email, ianaTZ) {
-    console.log(`team:${teamName} email:${email} tz:${ianaTZ}`);
+  async createInvitation(teamName, discordName, email, ianaTZ) {
+    console.log(`team:${teamName} discord:${discordName} email:${email} tz:${ianaTZ}`);
     let eventInvitation = [];
     for (let i = 0; i < this.icsModel.length; i++) {
       let keyword = '';
@@ -49,11 +50,14 @@ class Invitation {
         case 'SUMMARY:':
             eventInvitation.push('SUMMARY: ' + teamName + ' Team Meeting');
           break;
+        case 'ATTENDEE;':
+            eventInvitation.push(this.icsModel[i].replace(/<<placeholder>>/gi, email));
+          break;
         default:
           eventInvitation.push(this.icsModel[i]);
       }
     }
-    console.log('eventInvitation: ', eventInvitation);
+    await FileOps.objectToFile(this.outputFilePath+'/'+teamName+'_'+discordName+'.ics', eventInvitation);
   } 
 
   /**
@@ -63,8 +67,8 @@ class Invitation {
   async generate() {
     this.loadFiles();
     for (let i = 0; i < this.recipients.length; i++) { 
-      let [ teamName, email, ianaTZ ] = this.recipients[i];
-      this.createInvitation(teamName, email, ianaTZ);
+      let [ teamName, discordName, email, ianaTZ ] = this.recipients[i];
+      this.createInvitation(teamName, discordName, email, ianaTZ);
     }
   }
 }
