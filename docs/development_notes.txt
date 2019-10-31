@@ -1,5 +1,5 @@
 Information about the `.ics` file format can be found at https://icalendar.org/
 
 Manual testing:
-   node ./icsgen generate -m ./data/model.ics -t ./data/teamdata.txt -o ~/downloads
+   node ./icsgen generate -m ./data/model.ics -t ./data/recipients.csv -o ~/downloads
 
