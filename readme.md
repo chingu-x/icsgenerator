@@ -23,7 +23,7 @@ personal calendars.
 
 **_Description:_** Generate `.ics` files 
 
-**_Command:_** `icsgen generate --m <path-to-modelfile> --t <path-to-teamfile> --output <path-to-generated-files> '`
+**_Command:_** `icsgen generate -m <path-to-modelfile> -t <path-to-teamfile> -o <path-to-generated-files> '`
 
 **_Options:_**
 - `--model` specifies the path to the model `.ics` file. 
@@ -34,7 +34,7 @@ files will be created.
 **_Examples:_**
 
 Setup the environment variables for Discord extracts<br>
-  `node ./icsgen generate --m ~/icsfiles/model.txt --t ~/icsfiles/teamdata.txt --o ~/icsfiles/customfiles`
+  `node ./icsgen generate -m ~/icsfiles/model.txt -t ~/icsfiles/teamdata.txt -o ~/icsfiles/customfiles`
 
 ## Dependencies
 

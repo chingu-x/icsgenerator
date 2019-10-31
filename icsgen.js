@@ -16,8 +16,14 @@ program
     console.log('- team: ', args.team);
     console.log('- output: ', args.output);
 
+    if ( args.model === undefined ) {
+      throw new Error('Model file path (-m parameter) not defined');
+    }
+    if ( args.team === undefined ) {
+      throw new Error('Recipient file path (-t parameter) not defined');
+    }
     if ( FileOps.validateDirPath(args.output !== 0) ) {
-      throw new Error('Output file path (-m parameter) is not a directory');
+      //throw new Error('Output file path (-o parameter) is not a directory');
     }
 
     const invitation = new Invitation(args.model, args.team, args.output);

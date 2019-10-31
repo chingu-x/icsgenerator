@@ -15,7 +15,8 @@ class Invitation {
   }
 
   async generate() {
-    console.log('hi Mom');
+    const icsModel = FileOps.readFile(this.pathToModel);
+    console.log(icsModel);
   }
 
 }

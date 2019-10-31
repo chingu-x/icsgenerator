@@ -41,7 +41,7 @@ class FileOps {
 	 * @memberof FileOps
 	 */
 	static readFile(pathToFile) {
-		return fs.readFileSync(pathToFile);
+		return fs.readFileSync(pathToFile, 'utf8');
 	}
 
 	/**
