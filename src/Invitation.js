@@ -14,11 +14,59 @@ class Invitation {
     this.outputFilePath = outputFilePath;
   }
 
-  async generate() {
-    const icsModel = FileOps.readFile(this.pathToModel);
-    console.log(icsModel);
+  /**
+   * Load the model `.ics` file and the `.csv` file containing the event
+   * recipients 
+   * @memberof Invitation
+   */
+  loadFiles() {
+    this.icsModel = FileOps.readFile(this.pathToModel)
+      .split('\n');
+    this.recipients = FileOps.readFile(this.pathToRecipients)
+      .split('\n')
+      .map(recipient => recipient.split(','));
   }
 
+  /**
+   * Create a calendar invitation for a recipient. Information about the 
+   * `.ics` file format can be found at https://icalendar.org/
+   * @param {String} teamName Recipient team name
+   * @param {String} email Recipient email address
+   * @param {String} ianaTZ Recipient IANA timezone
+   * @memberof Invitation
+   */
+  createInvitation(teamName, email, ianaTZ) {
+    console.log(`team:${teamName} email:${email} tz:${ianaTZ}`);
+    let eventInvitation = [];
+    for (let i = 0; i < this.icsModel.length; i++) {
+      let keyword = '';
+      if ( this.icsModel[i].indexOf(';') !== -1 ) {
+        keyword =  this.icsModel[i].substring(0,this.icsModel[i].indexOf(';')+1);
+      } else {
+        keyword =  this.icsModel[i].substring(0,this.icsModel[i].indexOf(':')+1);
+      }
+      switch (keyword) {
+        case 'SUMMARY:':
+            eventInvitation.push('SUMMARY: ' + teamName + ' Team Meeting');
+          break;
+        default:
+          eventInvitation.push(this.icsModel[i]);
+      }
+    }
+    console.log('eventInvitation: ', eventInvitation);
+  } 
+
+  /**
+   * Customize the model `.ics` for each recipient
+   * @memberof Invitation
+   */
+  async generate() {
+    this.loadFiles();
+    for (let i = 0; i < this.recipients.length; i++) { 
+      let [ teamName, email, ianaTZ ] = this.recipients[i];
+      this.createInvitation(teamName, email, ianaTZ);
+    }
+  }
 }
 
 module.exports = Invitation;
